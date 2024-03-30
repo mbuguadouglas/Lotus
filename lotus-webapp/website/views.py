@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, render_template
 
 
 views = Blueprint('views',__name__)
@@ -7,4 +7,4 @@ views = Blueprint('views',__name__)
 @views.route('/',methods=['GET','POST'])
 def index():
 
-	return '<h1> This is the home page</h1>'
+	return render_template('index.html')

@@ -1,0 +1,177 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins',sans-serif;
+}
+/*appropriate logo size*/
+.logo{
+    width:52px;
+    height:52px;
+    margin:5px 5px 5px 5px;
+}
+/*footer styling*/
+footer {
+  height: 26vh;
+  margin: 0 1rem;
+  margin-top: 50px;
+}
+
+footer p {
+  text-align: center;
+  color: white;
+  background-color: grey;
+}
+
+
+/*sidebar styling*/
+
+body{
+/*    min-height: 100vh;*/
+/*    background: url('images/background.png') no-repeat;*/
+/*    background-color: primary;*/
+/*    background-size: cover;*/
+    background-position: center;
+}
+.sidebar{
+/*  background: black;*/
+    background: transparent;
+/*  background: url('txt.png') no-repeat;*/
+    backdrop-filter: blur(15px);
+/*    position: fixed;*/
+    top:0;
+    left:0;
+    width:fit-content;
+    height:fit-content;
+    padding:5px 5px;
+/*    transition: .5s;*/
+    border-right: 2px solid rgba(255,255,255,.2);
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+.sidebar .logo-menu{
+/*  background:pink;*/
+    display:flex;
+    align-items: center;
+    width:100%;
+    height:70px;
+}
+.sidebar .logo-menu .logo{
+    font-size:25px;
+/*    color:#fff;*/
+    pointer-events: none;
+    opacity:1;
+}
+.sidebar .logo-menu .toggle-btn{
+/*  background: yellowgreen;*/
+    position: absolute;
+    left:50%;
+    transform:translateX(-50%);
+    width:40px;
+    height:40px;
+    text-align: center;
+    line-height: 40px;
+    cursor:pointer;
+    transition: .5s;
+}
+.sidebar.active .logo-menu .toggle-btn{
+    left:90%;
+}
+.sidebar .link-name{
+    opacity: 1;
+    pointer-events: none;
+}
+.list .list-item{
+/*  background: yellowgreen;*/
+    list-style: none;
+    width:100%;
+    height: 50px;
+    margin:5px 0;
+    line-height: 50px;
+}
+.list .list-item a,
+.list .list-item a:hover{
+/*  background: blue;*/
+    border-radius: 7px;
+    display:flex;
+    align-items: center;
+    font-size:18px;
+    text-decoration: none;
+    color:black;
+    font-size: 23px;
+    margin-top: 10px;
+    margin-right: 10px;
+    transition: .5s;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, .2);
+}
+
+.list .list-item a i{
+    min-width: 50px;
+    height:50px;
+/*  background: salmon;*/
+    text-align: center;
+    line-height: 50px;
+}
+
+
+/*card grid styling*/
+.card-grid {
+/*    max-width: 800px;*/
+    width: fit-content;
+/*    margin: 10px 0;*/
+    display: flex;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.card {
+    background-color: white;
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+}
+
+
+
+/*styling noma*/
+/*.d-flex .btn{
+    background: orange;
+    border: 2px solid orange;
+    border-radius: 8px;
+    color: #fff;
+}
+.d-flex .btn:hover{
+    background: rgb(228, 150, 7);
+    border: 2px solid rgb(228, 150, 7);
+}
+
+#right1 :hover{
+    color: orange;
+    transition: 300ms;
+}
+
+.row .right2 {
+    margin-left: -10px;
+    height: 180px;
+    width: 180px;
+    border-radius: 10px;
+}
+
+.container .row .col .row .col a {
+    background-color: orange;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.container .row .col .row .col a :hover {
+    background-color: rgb(201, 132, 5);
+}
+#column :hover{
+    transform: scale(0.9);
+    transition: 450ms;
+    border-radius: 10px;
+}
+
+#items :hover {
+    color: orange;
+    transition: 200ms;
+}*/
