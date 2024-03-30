@@ -1,81 +1,223 @@
 {% extends 'base.html' %}
-{% block title %} Homepage {% endblock %}
+{% block title %} Lotus | Homepage {% endblock %}
 
 {% block body %}
 
-<!-- <div class="container"> -->
-<div class="card-grid">
+<div class="wrapper">
 
-	<div class="sidebar">
-		<!-- <div class="logo-menu">
-			<h2 class="logo"> Products </h2>
-			<i class="bx bx-menu toggle-btn"></i>
-		</div> -->
+	<!-- main1 section -->
+	<div class="main1">
+		<!-- sidebar div and code -->
+		<div class="sidebar">	
+			<ul class="list">
+				<li class="list-item active">
+					<a href="#">
+						<i class='bx bxs-store'></i>
+						<span class="link-name"> Market </span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<i class='bx bxs-book-open'></i>
+						<span class="link-name"> E-readers & Books </span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<i class='bx bxs-home'></i>
+						<span class="link-name"> Office Supplies </span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<i class='bx bxs-brush'></i>
+						<span class="link-name"> Arts & Crafts </span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<i class='bx bxs-camera'></i>
+						<span class="link-name"> Fashion </span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<i class='bx bx-dumbbell' ></i>
+						<span class="link-name"> Sporting Equipment </span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<i class='bx bxs-game' ></i>
+						<span class="link-name"> Gaming </span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<i class='bx bx-laptop'></i>
+						<span class="link-name"> Electronics </span>
+					</a>
+				</li>
+			</ul>
+		</div>
 
-		<ul class="list">
-			<li class="list-item active">
-				<a href="#">
-					<i class='bx bxs-store'></i>
-					<span class="link-name"> Market </span>
-				</a>
-			</li>
-			<li class="list-item">
-				<a href="#">
-					<i class='bx bxs-book-open'></i>
-					<span class="link-name"> E-readers & Books </span>
-				</a>
-			</li>
-			<li class="list-item">
-				<a href="#">
-					<i class='bx bxs-home'></i>
-					<span class="link-name"> Office Supplies </span>
-				</a>
-			</li>
-			<li class="list-item">
-				<a href="#">
-					<i class='bx bxs-brush'></i>
-					<span class="link-name"> Arts & Crafts </span>
-				</a>
-			</li>
-			<li class="list-item">
-				<a href="#">
-					<i class='bx bxs-camera'></i>
-					<span class="link-name"> Fashion </span>
-				</a>
-			</li>
-			<li class="list-item">
-				<a href="#">
-					<i class='bx bx-dumbbell' ></i>
-					<span class="link-name"> Sporting Equipment </span>
-				</a>
-			</li>
-			<li class="list-item">
-				<a href="#">
-					<i class='bx bxs-game' ></i>
-					<span class="link-name"> Gaming </span>
-				</a>
-			</li>
-			<li class="list-item">
-				<a href="#">
-					<i class='bx bx-laptop'></i>
-					<span class="link-name"> Electronics </span>
-				</a>
-			</li>
-		</ul>
+		<!-- middle div and code -->
+		<div class="middle">
+			<img src="static/images/gifs/sale gif Banana republic.gif"></img>
+		</div>
+
+		<!-- aside right code and div -->
+		<div class="aside">
+ 			<div class="aside-top">
+				<img src="static/images/gifs/New Journey.gif"></img>
+			</div>
+
+ 			<div class="aside-bottom">
+				<img src="static/images/gifs/New Journey.gif"></img>
+			</div>
+		</div>
 	</div>
 
-	<div class="card">
-	    <h1> Hello world</h1>
+	<!-- main2 section -->
+	<div class="main2">
+		<div class="category">
+			<img src="static/images/electronics/weekTech.jpg">
+			<h5> Week of Tech </h5>
+		</div>
+
+		<div class="category">
+			<img src="static/images/back2school.jpg">
+			<h5> Back to School </h5>
+		</div>
+
+		<div class="category">
+			<img src="static/images/freeDelivery.jpg">
+			<h5> Free Deliveries </h5>
+		</div>
+
+		<div class="category">
+			<img src="static/images/offers.jpg">
+			<h5 href="#"> Offers & Discounts </h5>
+		</div>
+
+		<div class="category">
+			<img src="static/images/airtime.png">
+			<h5> Airtime & Bills </h5>
+		</div>
+
+
 	</div>
 
-	<div class="card">
-		<h1> Hello world</h1>
+	<!-- main3 section -->
+	<div class="main3">
+
+		<div class="advert">
+			<div class="advert-img">
+				<img src="static/images/gaming/ps2.jpg">
+			</div>
+			<div class="advert-txt">
+				<h3> PlayStation 2 </h3>
+			</div>
+			<div class="advert-enclose">
+				<div class="advert-price">
+					<h4> Ksh. 3000 </h4>
+					<strike><p> Ksh.5000 </p></strike>
+				</div>
+				<div class="advert-btn">
+					<button type="submit" class="btn btn-primary" > Add </button>
+				</div>
+			</div>
+			<div class="advert-left">
+				<p> 3 Items left </p>
+			</div>
+		</div>
+
+		<div class="advert">
+			<div class="advert-img">
+				<img src="static/images/gaming/ps2.jpg">
+			</div>
+			<div class="advert-txt">
+				<h3> PlayStation 2 </h3>
+			</div>
+			<div class="advert-enclose">
+				<div class="advert-price">
+					<h4> Ksh. 3000 </h4>
+					<strike><p> Ksh.5000 </p></strike>
+				</div>
+				<div class="advert-btn">
+					<button type="submit" class="btn btn-primary" > Add </button>
+				</div>
+			</div>
+			<div class="advert-left">
+				<p> 3 Items left </p>
+			</div>
+		</div>
+
+		<div class="advert">
+			<div class="advert-img">
+				<img src="static/images/gaming/ps2.jpg">
+			</div>
+			<div class="advert-txt">
+				<h3> PlayStation 2 </h3>
+			</div>
+			<div class="advert-enclose">
+				<div class="advert-price">
+					<h4> Ksh. 3000 </h4>
+					<strike><p> Ksh.5000 </p></strike>
+				</div>
+				<div class="advert-btn">
+					<button type="submit" class="btn btn-primary" > Add </button>
+				</div>
+			</div>
+			<div class="advert-left">
+				<p> 3 Items left </p>
+			</div>
+		</div>
+
+		<div class="advert">
+			<div class="advert-img">
+				<img src="static/images/gaming/ps2.jpg">
+			</div>
+			<div class="advert-txt">
+				<h3> PlayStation 2 </h3>
+			</div>
+			<div class="advert-enclose">
+				<div class="advert-price">
+					<h4> Ksh. 3000 </h4>
+					<strike><p> Ksh.5000 </p></strike>
+				</div>
+				<div class="advert-btn">
+					<button type="submit" class="btn btn-primary" > Add </button>
+				</div>
+			</div>
+			<div class="advert-left">
+				<p> 3 Items left </p>
+			</div>
+		</div>
+
+		<div class="advert">
+			<div class="advert-img">
+				<img src="static/images/gaming/ps2.jpg">
+			</div>
+			<div class="advert-txt">
+				<h3> PlayStation 2 </h3>
+			</div>
+			<div class="advert-enclose">
+				<div class="advert-price">
+					<h4> Ksh. 3000 </h4>
+					<strike><p> Ksh.5000 </p></strike>
+				</div>
+				<div class="advert-btn">
+					<button type="submit" class="btn btn-primary" > Add </button>
+				</div>
+			</div>
+			<div class="advert-left">
+				<p> 3 Items left </p>
+			</div>
+		</div>
+
 	</div>
 
-	<div class="card">
-		<h1> Hello world</h1>
-	</div>
-</div>
-<!-- </div> -->
+</div> 
 
 {% endblock %}
