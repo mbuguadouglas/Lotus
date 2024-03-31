@@ -32,14 +32,14 @@ def create_app():
 	from .models import Customer, Product, Cart, Order
 	with app.app_context():
 		create_database(app)
-		
+
 
 	return app
 
 
 def create_database(app):
 	db.create_all()
-	return 'Database created successfully!'
+	print('Database created successfully!')
 
 
 # # FUNCTION TO CREATE DB. MUST IMPORT OS PATH

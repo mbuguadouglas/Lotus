@@ -118,6 +118,7 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     height: 90px;
     border-radius: 35px;
+    align-content: space-evenly;
 }
 .category{
     display: flex; 
@@ -142,6 +143,22 @@
     transition: 450ms;
     border-radius: 10px;
 }
+.main4{
+/*    margin: 8px;*/
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 5px;
+    border-right: 2px solid rgba(255,255,255,.2);
+    background-color: white;
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+    border-radius: 10px;
+}
+.main4 img{
+    height:200px;
+    width:100%;
+    border-radius: 10px;
+/*    align-content: stretch;*/
+}
 
 .main3{
 /*    background-color: yellowgreen;*/
@@ -152,6 +169,7 @@
 /*    height: 10%;*/
 }
 .advert{
+    height:100%;
     width: fit-content;
     padding: 10px;
     border-radius: 15px;
@@ -167,8 +185,9 @@
     transition: 450ms;
     border-radius: 10px;
 }
+
 .advert-img{
-    object-fit: cover;
+/*    object-fit: cover;*/
     max-height: 100%; 
     max-width: 100%; 
     border-radius: 10px;
@@ -198,11 +217,40 @@
 .footer {
     height: 15vh;
     margin-top: 50px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
     text-align: center;
     color: white;
 }
 
+
+/* form styling */
+
+.form{
+    margin: 0px auto;   /*/////// used to center a div////////*/
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 50px;
+    padding-top: 0px auto;
+    padding-bottom: 0px auto;
+/*    height: 50vh;*/
+    width: 600px;
+    border-right: 2px solid rgba(255,255,255,.2);
+    background-color: white;
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+    border-radius: 10px;
+    line-height: 40px;
+}
+.form h1{
+    text-align: center;
+    font-size: ;
+}
+.form-group{
+    font-size: 25px;
+    font-weight: bold;
+}
+.form-group button{
+    margin-top: 20px;
+}
 
 
 
