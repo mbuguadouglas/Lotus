@@ -14,7 +14,7 @@ class Customer(db.Model, UserMixin):
 	date_joined = db.Column(db.DateTime(), default=datetime.utcnow)
 
 	# setup foreign keys
-	orders = db.Relationship('Order', backref=db.backref('customers'))	# 1.link customer to order
+	order_item = db.Relationship('Order', backref=db.backref('customers'))	# 1.link customer to order
 	cart_item = db.Relationship('Cart', backref=db.backref('customers'))		# 2.link customer to cart
 	# product = db.Relationship('Product', backref=db.backref('customer'))		# 3.link customer to product table
 
@@ -57,8 +57,8 @@ class Product(db.Model):
 
 
 	# setup and foreign key with cart & order table
-	carts = db.Relationship('Cart', backref=db.backref('products'))
-	orders = db.Relationship('Order', backref=db.backref('products'))
+	cart_id = db.Relationship('Cart', backref=db.backref('products'))
+	order_id = db.Relationship('Order', backref=db.backref('products'))
 
 	# __str__ method to return human redable form of product
 	def __str__(self):
@@ -73,7 +73,7 @@ class Cart(db.Model):
 
 	# setup foreigh keys
 	customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
-	products = db.Column(db.Integer, db.ForeignKey('products.id'))
+	product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
 
 	def __str__(self):
 		# return f'<Cart{self.id}'
@@ -89,7 +89,8 @@ class Order(db.Model):
 	payment_id = db.Column(db.String(1000))
 
 	# setup foreign key
-	products = db.Column(db.Integer, db.ForeignKey('products.id'))
+	product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+	customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
 	def __str__(self):
 		# return f'Order {self.name}'
