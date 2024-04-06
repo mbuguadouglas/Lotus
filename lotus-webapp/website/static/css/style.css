@@ -2,6 +2,7 @@
     margin:0;
     padding:0;
     font-family: 'Poppins',sans-serif;
+/*    background-color: teal;*/
 }
 /*appropriate logo size*/
 .logo{
@@ -9,28 +10,41 @@
     height:52px;
     margin:5px 5px 5px 5px;
 }
-
-/*//////////////////////////////////////*/
+/*.navbar{
+    justify-content: space-evenly;
+}
+*//*//////////////////////////////////////*/
 /*////////flex box styling guide////////*/
 /*//////////////////////////////////////*/
 .wrapper{
-    border-radius: 10px;
+/*    border-radius: 10px;*/
     padding: 5px;
     display: flex;
     flex-direction: column;
     grid-gap: 1rem;
+    background-color: pink;
+/*    margin-bottom: 0px;*/
+/*    height: 100vh;*/
+    background: url('/static/images/background2.png') no-repeat;
+    background-size: cover;
+    background-position: center;
 }
+/*.wrapper .main1 .aside .sidebar{
+    border-radius: 10px;
+}*/
 .main1{
     display: flex;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+/*    background-color: beige;*/
+    height: 92.9vh;
 }
 .sidebar{
 /*    top:0;*/
 /*    left:0;*/
 /*    margin-left: ;*/
     width:fit-content;
-    height: 90vh;
+/*    height: 90vh;*/
     border-radius: 10px;
     border-right: 2px solid rgba(255,255,255,.2);
     background-color: white;
@@ -77,10 +91,12 @@
 .middle{
 /*    background-color: teal;*/
     width: 50%;
-    height: 90vh;
+/*    height: 90vh;*/
     background-color: white;
     padding: 5px;
     box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+    border-radius: 10px;
+/*    margin: 0px;*/
 }
 .middle img{
     height: 100%;
@@ -92,18 +108,25 @@
     border-radius: 3px;*/
 }
 .aside{
-/*    color: black;*/
+/*    background-color: red;*/
     display: flex;
     flex-direction: column;
     padding:5px;
-    height: 60vh;
+/*    height: 60vh;*/
     width: 30%;
     grid-gap: .5rem;
     background-color: white;
+    border-radius: 10px;
     box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
 /*    object-fit: true;*/
 /*    overflow: hidden;*/
 }
+/*.aside-top{
+    background-color: red;
+}
+.aside-bottom{
+    background-color: blue;
+}*/
 .aside img{
     height: 100%; 
     width: 100%; 
@@ -118,7 +141,10 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     height: 90px;
     border-radius: 35px;
-    align-content: space-evenly;
+/*    justify-content: space-evenly;  */
+    justify-content: space-around;  /* best for evenly spacing items */
+/*    align-items: center;*/
+/*    column-gap: 1em;*/
 }
 .category{
     display: flex; 
@@ -179,6 +205,7 @@
     flex-direction: column;
     overflow: hidden;
     align-content: center;
+    flex-wrap: wrap;
 }
 .advert:hover{
     transform: scale(0.9);
@@ -216,7 +243,7 @@
 }
 .footer {
     height: 15vh;
-    margin-top: 50px;
+    margin-top: 0px;
     margin-bottom: 0px;
     text-align: center;
     color: white;
@@ -250,6 +277,42 @@
 }
 .form-group button{
     margin-top: 20px;
+}
+
+/*PROFILE PAGE STYLING*/
+.profile{
+/*    background-color: red;*/
+    height: 60vh;
+    display: flex;
+/*    padding: 20px;*/
+    grid-gap: 1rem;
+}
+.profile-sidebar{
+/*    background-color: green;*/
+/*    height: 90vh;*/
+    width: fit-content;
+    border-radius: 10px;
+    border-right: 2px solid rgba(255,255,255,.2);
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+}
+.profile-sidebar div{
+    margin: 20px;
+}
+.profile-main{
+/*    background-color: yellow;*/
+    padding:50px;
+    width: 65%;
+    border-radius: 10px;
+    border-right: 2px solid rgba(255,255,255,.2);
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+}
+.profile h3{
+    align-self: center;
+}
+/*change the button link to be a normal button appearance*/
+.profile a{
+    text-decoration: none;  /* remove the underline */
+    color: inherit;     /* remove the blue text  */
 }
 
 

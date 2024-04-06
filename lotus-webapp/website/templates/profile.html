@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> profile </title>
+</head>
+<body>
+	<h1> Current user: {{ user.id }}</h1>
+	<h1> Current user: {{ user.email }}</h1>
+	<h1> Current user: {{ user.name }}</h1>
+	<h1> Current user: {{ user.date_joined }}</h1>
+</body>
+</html> -->
+
+{% extends 'base.html' %}
+
+{% block title %} Lotus | Profile {% endblock %}
+
+{% block body %}
+
+<div class="profile">
+	<div class="profile-sidebar">
+		<div>
+			<h1> Welcome {{user.name.capitalize()}} </h1>
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-secondary"> Profile </button>
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-secondary"><a href="change-password/{{user.id}}"> Change Password </a></button>
+		</div>
+
+	</div>
+
+	<div class="profile-main">
+
+		<div>
+			<h3> Username :   {{ user.name }} </h3>
+
+			<h3> Email :  {{ user.email }} </h3>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

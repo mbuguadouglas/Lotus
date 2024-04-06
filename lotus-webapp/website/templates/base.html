@@ -28,7 +28,7 @@
     		<div class="collapse navbar-collapse" id="navbarScroll">
       			<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         			<li class="nav-item">
-         				<a class="nav-link active" aria-current="page" href="#"> Home<a>
+         				<a class="nav-link active" aria-current="page" href="{{url_for('views.index')}}"> Home<a>
         			</li>
        				<li class="nav-item">
          				 <a class="nav-link" href="#"> About Us </a>
@@ -52,12 +52,18 @@
         			<li class="nav-item dropdown">
          				 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Account </a>
          			<ul class="dropdown-menu">
-	           		 	<li><a class="dropdown-item" href="#"><i class='bx bxs-user'></i> Profile </a></li>
+         				{% if user.is_authenticated %}
+	           		 	<li><a class="dropdown-item" href="/auth/profile/{{user.id}}"><i class='bx bxs-user'></i> Profile </a></li>
 	            		<li><a class="dropdown-item" href="#"><i class='bx bxs-truck'></i> Orders </a></li>
-	            		<li><a class="dropdown-item" href="#"><i class='bx bx-log-in' ></i> Log in </a></li>
-	            		<li><a class="dropdown-item" href="#"><i class='bx bx-log-out'></i> Log Out </a></li>
+	            		<li><a class="dropdown-item" href="{{url_for('auth.logout')}}"><i class='bx bx-log-out'></i> Log Out </a></li>
 	            		<li><hr class="dropdown-divider"></li>
 	            		<li><a class="dropdown-item" href="#"><i class='bx bxs-bookmark-plus'></i> Saved items</a></li>
+	            		{% else %}
+	            		<li><a class="dropdown-item" href="{{url_for('auth.signup')}}"><i class='bx bx-log-in' ></i> Signup </a></li>
+	            		<li><a class="dropdown-item" href="{{url_for('auth.login')}}"><i class='bx bx-log-in' ></i> Log in </a></li>
+	            		<li><hr class="dropdown-divider"></li>
+	            		<li><a class="dropdown-item" href="#"><i class='bx bxs-bookmark-plus'></i> Saved items</a></li>
+	            		{% endif %}
           			</ul>
         			</li>
 

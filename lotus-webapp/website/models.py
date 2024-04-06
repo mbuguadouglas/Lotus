@@ -10,7 +10,8 @@ class Customer(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True, index=True)
 	email = db.Column(db.String(50), unique=True , nullable=False)
 	name = db.Column(db.String(50))
-	password_hash = db.Column(db.String(50))
+	# password_hash = db.Column(db.String(50))
+	password = db.Column(db.String(50))
 	date_joined = db.Column(db.DateTime(), default=datetime.utcnow)
 
 	# setup foreign keys
@@ -18,21 +19,26 @@ class Customer(db.Model, UserMixin):
 	cart_item = db.Relationship('Cart', backref=db.backref('customers'))		# 2.link customer to cart
 	# product = db.Relationship('Product', backref=db.backref('customer'))		# 3.link customer to product table
 
-
-	# use getter and setter methods to set password hash and allow for its retrieval
-	@property
-	def password(self):
-		raise AttributError('Password is not readable')
+	#################################################
+	######did not work as required###################
+	######when called in auth.py kepr returning #####
+	######create new acc yet passwords match#########
+	#################################################
 	
-	# setter
-	@password.setter
-	def password(self, password):
-		self.password_hash = generate_password_hash(password=password)
+	# use getter and setter methods to set password hash and allow for its retrieval
+	# @property
+	# def password(self):
+	# 	raise AttributeError('Password is not readable')
+	
+	# # setter
+	# @password.setter
+	# def password(self, password):
+	# 	self.password_hash = generate_password_hash(password=password)
 
-	# password verification
-	def verify_password(self,password):
-		# if passwords match(correct) return true, else return false
-		return check_password_hash(self.password_hash, password=password)
+	# # password verification
+	# def verify_password(self,password):
+	# 	# if passwords match(correct) return true, else return false
+	# 	return check_password_hash(self.password_hash, password=password)
 
 	# string method to allow for better represenattion of class
 	def __str__(self):
