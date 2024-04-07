@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Lotus | {% block title %} Forms {% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/forms_style.css')}}">
+</head>
+<body>
+
+
+	<!-- flash forms error messages -->
+	{% if form.errors %}
+		{% for field_name, field_errors in form.errors|dictsort if field_errors %}
+			{% for error in field_errors %}
+				<div class="alert alert-warning alert-dismissible fade show">
+					{{ form[field_name].label }} : {{ error }}
+      			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	      		</div>
+			{% endfor %}
+		{% endfor %}
+	{% endif %}
+
+	<!-- flash basic error messages from app -->
+		{% with messages=get_flashed_messages(with_categories=true) %}
+			{% for category, message in messages %}
+   				<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+      				{{ message }}
+      			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    			</div>
+	  		{% endfor %}
+		{% endwith %}
+
+	{% block body %}
+
+
+	{% endblock %}
+
+
+	<footer class="footer bg-dark"> 
+		<!-- bg-dark is a bootstrap class for dark color. match navbar -->
+		<p>Copyright <strong>&#169;</strong> 2024 Lotus. All Rights Reserved.</p>
+    </footer>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+</html>

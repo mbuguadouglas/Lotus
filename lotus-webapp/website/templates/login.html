@@ -1,25 +1,28 @@
-{% extends 'base.html' %}
-{% block title %} Lotus | Login {% endblock %}
+{% extends 'forms.html' %}
+{% block title %} Login {% endblock %}
 
 {% block body %}
 
 	<form method="POST">
 
 		<fieldset class="form">
-			<h1> Login </h1>
+
+			{{ form.hidden_tag() }}
+
+			<h1 align="center"> Login </h1>
 
 			<div class="form-group">
-				<label for="email"> Email Address </label>
-				<input class="form-control" type="email" name="email" id="email" placeholder="Enter Email" autofocus required>
+				{{ form.email.label }}
+				{{ form.email(class='form-control', placeholder='Enter Email') }}
 			</div>
 
 			<div class="form-group">
-				<label for="password"> Password </label>
-				<input class="form-control" type="password" name="password" id="password" placeholder="Enter Password" required>
+				{{ form.password.label }}
+				{{ form.password(class='form-control', placeholder='Enter Password') }} 
 			</div>
 
 			<div align="center" class="form-group">
-				<button type="submit" class="btn btn-primary"> Login </button>
+				{{ form.login(class='btn btn-primary') }}
 			</div>
 			
 		</fieldset>

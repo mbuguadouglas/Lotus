@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
+from .forms import SignupForm, LoginForm, ChangePasswordForm
 from . import db
 from .models import Customer
 
@@ -14,13 +15,18 @@ def signup():
 	""" function that defines the authentication process for signup
 	chose not to use wtf_forms since one cannot style them. They're
 	hiddeous. Might take up the callenge of rectifying this as an open source
-	project """
+	project 
+	** took it up. not so bad**
+	"""
 
-	if request.method == 'POST':
-		email = request.form.get('email')
-		username = request.form.get('username')
-		password1 = request.form.get('password1')
-		password2 = request.form.get('password2')
+	form = SignupForm() 
+
+	# if request.method == 'POST':
+	if form.validate_on_submit():
+		email = form.email.data
+		username = form.username.data
+		password1 = form.password1.data
+		password2 = form.password2.data
 
 		# check if the user already exists in the db
 		customer = Customer.query.filter_by(email=email).first()
@@ -28,19 +34,6 @@ def signup():
 		# if user exists
 		if customer:
 			message = 'Oops! Looks like this user already exists. Try logging in instead?'
-			flash(message, category='warning')
-		elif len(email) <= 7 or len(email) >= 30:
-			message = "Oops! Looks like the email you entered is not valid. Please try again"
-			flash(message, category='warning')
-		elif len(username) <= 3:
-			message = 'Oops! Usernames must be at least 3 characters long. Please try again'
-			flash(message, category='warning')
-		# password logic for special caharacters? cpital letter, e.t.c
-		elif len(password1) <= 5:
-			message = 'Oops! Passwords must be at least 5 characters long. Please try again'
-			flash(message, category='warning')
-		elif password1 != password2:
-			message = "Oops! Looks like the passwords you entered don't match. Try typing them again."
 			flash(message, category='warning')
 		else:
 			# try catch block foe error handling when adding a user to the database
@@ -53,22 +46,26 @@ def signup():
 				flash(message, category='success')
 			except Exception as e:
 				print (e)
-				message = 'Oops! Looks like the account could not be craeted. Try again?'
+				message = 'Oops! Looks like the account could not be created. Try again?'
 				flash(message, category='warning')
 
 			login_user(new_customer)
 			return redirect(url_for('views.index'))
 
-	return render_template('signup.html', user=current_user)
+	return render_template('signup.html', user=current_user, form=form)
 
 
 
 @auth.route('login', methods=['GET','POST'])
 def login():
-	if request.method == 'POST':
+
+	form = LoginForm()
+
+	# if request.method == 'POST':
+	if form.validate_on_submit():
 		# get the email and password values from the form
-		email = request.form.get('email')
-		password = request.form.get('password')
+		email = form.email.data
+		password = form.password.data
 
 		# Check if the user exists in the db
 		customer = Customer.query.filter_by(email=email).first()
@@ -77,8 +74,7 @@ def login():
 		if customer:
 			# if customer does exist in db, check if passwords match
 			if check_password_hash(customer.password, password):
-			# if customer.verify_password(password=generate_password_hash(password)):	#using werkzeug in models.py
-				# login_user(customer, remember=True)
+
 				login_user(customer, remember=True)
 
 				message = 'Congratulations! You have successfuly logged in.'
@@ -93,16 +89,12 @@ def login():
 				message = 'Oops! Looks like you entered the wrong password. Please check and try again.'
 				flash(message, category='warning')
 
-				print(password)
-				print(customer.password)
-				# print(check_password_hash(customer.password, password))
-
 		else:
 			message = 'Oops! Looks like the user does not exist. Maybe you could try signing up instead?'
 			flash(message, category='warning')
 
 
-	return render_template('login.html', user=current_user)
+	return render_template('login.html', user=current_user, form=form)
 
 
 
@@ -140,11 +132,13 @@ def profile(customers_id):	#why not user.id?!?!
 @auth.route('profile/change-password/<int:customers_id>', methods=['GET','POST'])
 @login_required
 def change_password(customers_id):
-	# customer = Customer.query.get(customers_id) -> user current_user instaed
+
+	form = ChangePasswordForm()
+
 	if request.method == 'POST':
-		current_password = request.form.get('current_password')
-		new_password = request.form.get('new_password')
-		confirm_new_password = request.form.get('confirm_new_password')
+		current_password = form.current_password.data
+		new_password = form.new_password.data
+		confirm_new_password = form.confirm_new_password.data
 
 		# get the customer from the database
 		customer = Customer.query.get(customers_id)
@@ -176,5 +170,5 @@ def change_password(customers_id):
 			message = 'Oops! Looks like the current password entered is incorrect.'
 			flash(message, category='danger')
 
-	return render_template('change_password.html', user=current_user)
+	return render_template('change_password.html', user=current_user, form=form)
 

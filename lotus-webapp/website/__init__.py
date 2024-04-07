@@ -35,14 +35,11 @@ def create_app():
 
 
 	# when user tries accessing url not in our flask app they get this html returned
-	@app.errorhandler(404)
+	@app.errorhandler(404)	#-> means you can add custom pages for each error
 	def page_not_found(error):
 		return render_template('error_404.html')
 
 
-	# create he database within the app context
-	with app.app_context():
-		create_database(app)
 
 
 	# import all related .py files as modules
@@ -60,6 +57,10 @@ def create_app():
 	# app.register_blueprint(admin)
 
 
+	# create the database within the app context
+	# this MUST be right at the bottom otherwise will not run
+	with app.app_context():
+		create_database(app)
 
 
 	return app

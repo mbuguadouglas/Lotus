@@ -25,6 +25,7 @@
     background-color: pink;
 /*    margin-bottom: 0px;*/
 /*    height: 100vh;*/
+/*    background: url('/static/images/background.jpg') no-repeat;*/
     background: url('/static/images/background2.png') no-repeat;
     background-size: cover;
     background-position: center;
@@ -315,5 +316,11 @@
     color: inherit;     /* remove the blue text  */
 }
 
-
+/*error page styling*/
+.error {
+    margin-left: 15%;
+    margin-top: 15px;
+    height: 80vh;
+    width: 900px;
+}
 
