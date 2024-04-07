@@ -1,25 +1,124 @@
 .
 ├── lotus-webapp
 │   ├── app.py
+│   ├── instance
+│   │   └── db.sqlite3
+│   ├── items
 │   └── website
-│       ├── admin.py
+│       ├── admins.py
 │       ├── auth.py
 │       ├── forms.py
 │       ├── __init__.py
-│       ├── model.py
+│       ├── models.py
+│       ├── __pycache__
+│       │   ├── admin.cpython-310.pyc
+│       │   ├── admins.cpython-310.pyc
+│       │   ├── auth.cpython-310.pyc
+│       │   ├── forms.cpython-310.pyc
+│       │   ├── __init__.cpython-310.pyc
+│       │   ├── __init__.cpython-312.pyc
+│       │   ├── models.cpython-310.pyc
+│       │   └── views.cpython-310.pyc
 │       ├── static
 │       │   ├── css
+│       │   │   ├── all.min.css
+│       │   │   ├── bootstrap.css
+│       │   │   ├── bootstrap.min.css
+│       │   │   ├── forms_style.css
+│       │   │   ├── images
+│       │   │   │   └── background.png
 │       │   │   └── style.css
 │       │   ├── images
+│       │   │   ├── 404_4.jpg
+│       │   │   ├── 404.png
+│       │   │   ├── airtime.png
+│       │   │   ├── baby
+│       │   │   │   ├── Babe Rock Shape Sorter Toddler Toy Classic Wooden Toy for Baby Boys & Girls Learning Educational Color Sorting Cube Toys for Kids.jpg
+│       │   │   │   ├── Fisher-Price Bright Beats Dance & Move BeatBo.jpg
+│       │   │   │   ├── Infinite Lotus Baby Diaper Caddy Organizer for Diapers, Wipes & Other Nursery Essentials - Portable Diaper Caddy for Changing Table Organizer & Around the House - Diaper Caddy Basket - Diaper Storage Caddy.jpg
+│       │   │   │   └── LotFancy Teddy Bear Stuffed Animals, 20 inch Soft Cuddly Stuffed Plush Bear, Cute Stuffed Animals Toy with Footprints, Gifts for Kids Baby Toddlers on Baby Shower, Valentine's Day, Brown.jpg
+│       │   │   ├── back2school.jpg
+│       │   │   ├── background2.png
+│       │   │   ├── background.jpg
+│       │   │   ├── background.png
+│       │   │   ├── electronics
+│       │   │   │   ├── 12 Inch MacBook.jpg
+│       │   │   │   ├── 5 Netflix Shows For A Good Scare.jpg
+│       │   │   │   ├── Here's a great EDC tech gadget for your favorite geek! - The Gadgeteer.jpg
+│       │   │   │   ├── Kate Winslet's new dark comedy TV series looks like a must-watch.jpg
+│       │   │   │   ├── Microsoft Surface Laptop 3 - An Awesome Travel Laptop.jpg
+│       │   │   │   ├── The best laptops you can get.jpg
+│       │   │   │   ├── THIS IS YOUR FINAL CALL TO CATCH THE GREAT SAMSUNG TV SALE!.jpg
+│       │   │   │   └── weekTech.jpg
+│       │   │   ├── freeDelivery.jpg
+│       │   │   ├── gaming
+│       │   │   │   ├── 30 Years of Handheld Game Systems, Rachid Lotf.jpg
+│       │   │   │   ├── Amazon_fr Deco Gamer - 4 Étoiles & Plus.jpg
+│       │   │   │   ├── Buy PS5 Consoles PlayStation®.jpg
+│       │   │   │   ├── gamingPc2.jpg
+│       │   │   │   ├── gamingPc.jpg
+│       │   │   │   ├── glove.jpg
+│       │   │   │   ├── Illustration De La Manette De Jeu Du Contrôleur De Jeu Cyberpunk Photo Premium.jpg
+│       │   │   │   └── ps2.jpg
+│       │   │   ├── gifs
+│       │   │   │   ├── gif.gif
+│       │   │   │   ├── mainGif.gif
+│       │   │   │   ├── market.gif
+│       │   │   │   ├── newSales.gif
+│       │   │   │   ├── PacMan.gif
+│       │   │   │   ├── sale.gif
+│       │   │   │   ├── samsung.gif
+│       │   │   │   ├── store.gif
+│       │   │   │   ├── target.gif
+│       │   │   │   └── usage.gif
+│       │   │   ├── mailbox-flag.svg
+│       │   │   ├── mpesa.png
+│       │   │   ├── offers.jpg
+│       │   │   ├── office
+│       │   │   │   ├── Black&Gold Collection.jpg
+│       │   │   │   ├── IDS Online Faux Leather Office Desk Swivel Chair, Old Model, White.jpg
+│       │   │   │   └── SjSsefR_.jpg
+│       │   │   ├── phones
+│       │   │   │   ├── Amazon_com Samsung Galaxy Phones.jpg
+│       │   │   │   ├── Compra el nuevo Galaxy S21 FE 5G Samsung España.jpg
+│       │   │   │   ├── oiV0QwWt.jpg
+│       │   │   │   ├── samsungFlip.jpg
+│       │   │   │   └── SAMSUNG Galaxy S22+.jpg
+│       │   │   ├── PpuPVlVG.jpg
+│       │   │   ├── Premium Vector Online shopping for social media post.jpg
+│       │   │   ├── sports
+│       │   │   │   ├── 5SOoFYZh.jpg
+│       │   │   │   ├── Baseball by ebay_com.jpg
+│       │   │   │   ├── Bauer Senior IMS 5_0 Hockey Player Helmet Combo - Navy _ Large.jpg
+│       │   │   │   ├── Fastpitch Softball Drills For Catchers How To Improve Your Catcher.jpg
+│       │   │   │   ├── Field Hockey Equipment Bags Anthem Sports.jpg
+│       │   │   │   ├── Rawlings Official League Recreational Use Practice Baseballs Youth Bag of 12 OLB3BAG12 12 Count.jpg
+│       │   │   │   ├── Revisiones prácticas y clasificaciones de los….jpg
+│       │   │   │   ├── s1XtKGOs.jpg
+│       │   │   │   ├── Senior Hockey Equipment Packages & Gear Sets.jpg
+│       │   │   │   ├── Slazenger V200 Hockey Stick Players Equipment Training Sports Accessories Red_Black 37_5 Inch - review, compare prices, buy online.jpg
+│       │   │   │   ├── Tips on Finding the Best 2nd Baseman Glove.jpg
+│       │   │   │   └── Wallhogs Baseball Wall Decal Red_White 48_0 x 48.jpg
+│       │   │   ├── Store Shopping Mall Vector Hd PNG Images, Shop Store Market Building Shopping Flat Color Icon Vector, Building Icons, Shop Icons, Shopping Icons PNG Image For Free Download.jpg
+│       │   │   ├── Supermarket Flyer Templates.jpg
+│       │   │   └── Where to Get the Best Hot Chicken in Nashville.jpg
 │       │   └── js
+│       │       ├── bootstrap.bundle.js
+│       │       ├── bootstrap.bundle.js.map
+│       │       ├── bootstrap.bundle.min.js
 │       │       └── script.js
 │       ├── templates
+│       │   ├── add_items.html
 │       │   ├── base.html
+│       │   ├── change_password.html
+│       │   ├── error_404.html
+│       │   ├── forms.html
 │       │   ├── index.html
 │       │   ├── login.html
+│       │   ├── profile.html
 │       │   └── signup.html
 │       └── views.py
 ├── README.md
 └── tree.txt
 
-8 directories, 15 files
+19 directories, 103 files

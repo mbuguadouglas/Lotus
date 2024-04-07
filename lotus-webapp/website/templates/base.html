@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title> {% block title %} Lotus {% endblock %} </title>
+	<title> Lotus | {% block title %} Lotus {% endblock %} </title>
 
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 	<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.css')}}"> -->
@@ -61,7 +61,7 @@
 	            		<li><hr class="dropdown-divider"></li>
 	            		<li><a class="dropdown-item" href="#"><i class='bx bxs-bookmark-plus'></i> Saved items</a></li>
 	            		{% else %}
-	            		<li><a class="dropdown-item" href="{{url_for('auth.signup')}}"><i class='bx bx-log-in' ></i> Signup </a></li>
+	            		<li><a class="dropdown-item" href="{{url_for('auth.signup')}}"><i class='bx bx-user-plus'></i> Signup </a></li>
 	            		<li><a class="dropdown-item" href="{{url_for('auth.login')}}"><i class='bx bx-log-in' ></i> Log in </a></li>
 	            		<li><hr class="dropdown-divider"></li>
 	            		<li><a class="dropdown-item" href="#"><i class='bx bxs-bookmark-plus'></i> Saved items</a></li>
@@ -96,6 +96,7 @@
 	<footer class="footer bg-dark"> 
 		<!-- bg-dark is a bootstrap class for dark color. match navbar -->
 		<p>Copyright <strong>&#169;</strong> 2024 Lotus. All Rights Reserved.</p>
+		<p> Powered by <i class='bx bxl-flask'></i> </p>
     </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

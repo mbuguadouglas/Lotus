@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %} Admin - View items {% endblock %}
+
+
+{% block body %}
+	
+	{% if items | length < 1 %}   <!-- why not just use len(items)-->
+
+		<div align="center">
+			<h1> Hello, {{ user.name.capitalize() }}! </h1>
+			<h2> Unfortunately, there are no items to dispaly </h2>
+		</div>
+
+	{% else %}
+
+		<div>
+			<table class="table table-striped table-secondary table-hover table-bordered border-dark table-responsive-md caption-top">
+			<caption> Administrative Duties: View and modify items in the database </caption>
+			  <thead class="table-dark">
+			    <tr>
+			      <th scope="col"> ID </th>
+			      <th scope="col"> Date Added </th>
+			      <th scope="col"> Product Name </th>
+			      <th scope="col"> Previous Price</th>
+			      <th scope="col"> Current Price</th>
+			      <th scope="col"> Category </th>
+			      <th scope="col"> Picture </th>
+			      <th scope="col"> In Stock </th>
+			      <th scope="col"> Flash Sale </th>
+			      <th scope="col"> Action </th>
+			    </tr>
+			  </thead>
+
+			  <tbody class="table-group-divider">
+
+			  	{% for item in items %}
+
+			    <tr class="">
+			     		        
+		     		<td class="table-secondary"> {{ item.id }}</td>
+		     		<td > {{ item.date_added }}</td>
+		     		<td class="table-primary"> {{ item.name }}</td>
+		     		<td class="table-danger"> {{ item.past_price }}</td>
+		     		<td class="table-primary"> {{ item.current_price }}</td>
+		     		<td > {{ item.category }}</td>
+		     		<td ><img src="{{ item.picture }}" class="add-items-image"></img></td>
+		     		<td > {{ item.instock }}</td>
+		     		<td > {{ item.flash_sale }}</td>
+		     		<td class="table-dark"> 
+		     			<a href="#"> Update </a>
+		     			<a href="#"> Delete </a>
+		     		</td>
+			     	
+			    </tr>
+
+			    {% endfor %}
+
+			  </tbody>
+			</table>
+		</div>
+
+	{% endif %}
+
+{% endblock %}

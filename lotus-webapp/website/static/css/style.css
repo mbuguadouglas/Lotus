@@ -315,4 +315,13 @@
     height: 80vh;
     width: 900px;
 }
+.table-div{
+    max-width: 800px;
+}
+.add-items-image{
+    margin: 5px;
+    height: 70px;
+    width: 70px;
+    border-radius: 30px;
+}
 

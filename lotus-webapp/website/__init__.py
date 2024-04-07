@@ -51,13 +51,14 @@ def create_app():
 	# import all related .py files as modules
 	from .auth import auth
 	from .views import views
-	from .models import Customer, Product, Cart, Order
 	from .admins import admins
+	from .models import Customer, Product, Cart, Order
 
 	# register the various blueprints
 	app.register_blueprint(auth, url_prefix='/auth')	#localhost:5000/auth/<route>
-	app.register_blueprint(views, url_prefix='/')	#localhost:5000/<route>
-	app.register_blueprint(admins, url_prefix='/admins')	#localhost:5000/admin/<route>
+	app.register_blueprint(views)	#localhost:5000/<route>
+	# app.register_blueprint(admins, url_prefix='/admins')	#localhost:5000/admin/<route>
+	app.register_blueprint(admins, url_prefix='/')	#had to remove the prefix to allow for displaying of images
 
 	# build and admin panel views
 	admin.add_view(ModelView(Customer, db.session))

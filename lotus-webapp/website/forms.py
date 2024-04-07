@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import Form, StringField, IntegerField, FloatField, BooleanField, PasswordField, EmailField, SubmitField, TextAreaField
+from wtforms import Form, StringField, IntegerField, FloatField, BooleanField, PasswordField, EmailField, SubmitField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, InputRequired, NumberRange, Length, EqualTo
 from flask_wtf.file import FileField, FileRequired
 
@@ -31,6 +31,8 @@ class ShoppingItemsForm(FlaskForm):
 	product_name = StringField('Name of Product', validators=[DataRequired()]) 
 	current_price = FloatField('Current price of product', validators=[DataRequired()]) 
 	previous_price = FloatField('Previous price of product', validators=[DataRequired()]) 
+	category = SelectField('Choose the Product Category', choices=[('market', 'Market'), ('books', 'E-readers & Books'), ('office', 'Office Supplies'),
+		('arts', 'Arts & Crafts'),('fashion', 'Fashion & Design'),('sporting equipment', 'Sporting equipment'),('gaming', 'Gaming'),('electronics', 'Electronics')])
 	in_stock = IntegerField('In stock', validators=[DataRequired(), NumberRange(min=0)])
 	product_pic = FileField('Product picture', validators=[FileRequired()])
 	flash_sale = BooleanField('Flash sale?')
