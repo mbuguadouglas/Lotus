@@ -1,11 +1,15 @@
 from flask import Flask, Blueprint, render_template
+# from flask_bootstrap import Bootstrap3
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 # from os import path
 
 db = SQLAlchemy()
 db_name = 'db.sqlite3'
-
+admin = Admin(name='Lotus', template_mode='bootstrap3')
+# admin = Admin()
 
 def create_app():
 	""" function to runn the application"""
@@ -14,8 +18,10 @@ def create_app():
 	app = Flask(__name__)
 	app.config['SECRET_KEY'] = '@Th3NorthR3m3mbers'	#set secret key for encrypting sessions
 	app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_name}'
+	app.config['FLASK_ADMIN_SWATCH'] = 'flatly'	#set theme for admin panel
 
 	db.init_app(app)	#initialize database
+	admin.init_app(app)		#initialize admin
 
 
 	# initialize the login manager for session and token mngmt
@@ -46,15 +52,18 @@ def create_app():
 	from .auth import auth
 	from .views import views
 	from .models import Customer, Product, Cart, Order
-	from .admin import admin
+	from .admins import admins
 
 	# register the various blueprints
 	app.register_blueprint(auth, url_prefix='/auth')	#localhost:5000/auth/<route>
 	app.register_blueprint(views, url_prefix='/')	#localhost:5000/<route>
-	app.register_blueprint(admin, url_prefix='/admin')	#localhost:5000/admin/<route>
-	# app.register_blueprint(auth)
-	# app.register_blueprint(views)
-	# app.register_blueprint(admin)
+	app.register_blueprint(admins, url_prefix='/admins')	#localhost:5000/admin/<route>
+
+	# build and admin panel views
+	admin.add_view(ModelView(Customer, db.session))
+	admin.add_view(ModelView(Product, db.session))
+	admin.add_view(ModelView(Order, db.session))
+	admin.add_view(ModelView(Cart, db.session))
 
 
 	# create the database within the app context
