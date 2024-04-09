@@ -35,7 +35,7 @@ def create_app():
 	@login_manager.user_loader
 	def load_user(id):
 		""" function to automatically 
-		look up the db searchig if users primary is present
+		look up the db searchig if users primary key is present
 		"""
 		return Customer.query.get(int(id))
 
