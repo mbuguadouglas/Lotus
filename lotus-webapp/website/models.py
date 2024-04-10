@@ -78,6 +78,7 @@ class Cart(db.Model):
 	items = db.Column(db.Integer, nullable=False)
 
 	# setup foreigh keys
+	# should have called these link instead. easier to understand.
 	customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
 	product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
 

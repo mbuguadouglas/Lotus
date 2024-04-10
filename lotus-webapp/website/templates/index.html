@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Lotus | Homepage {% endblock %}
+{% block title %} Homepage {% endblock %}
 
 {% block body %}
 
@@ -116,114 +116,39 @@
 
 	<!-- main3 section -->
 	<div class="main3">
+		<div class="main3-container".>
 
-		<!-- <div class="advert">
-			<div class="advert-img">
-				<img src="static/images/gaming/gamingPc2.jpg">
-			</div>
-			<div class="advert-txt">
-				<h3> PlayStation 2 </h3>
-			</div>
-			<div class="advert-enclose">
-				<div class="advert-price">
-					<h4> Ksh. 3000 </h4>
-					<strike><p> Ksh.5000 </p></strike>
-				</div>
-				<div class="advert-btn">
-					<button type="submit" class="btn btn-primary" > Add </button>
-				</div>
-			</div>
-			<div class="advert-left">
-				<p> 3 Items left </p>
-			</div>
-		</div> -->
+		{% for item in items %}
+			<div class="advert">
 
-		<div class="advert">
-			<div class="advert-img">
-				<!-- <img src="static/images/gaming/gamingPc.jpg"> -->
-				<!-- <img src="static/images/gaming/glove.jpg"> -->
-				<img src="static/images/gaming/ps2.jpg">
-			</div>
-			<div class="advert-txt">
-				<h3> PlayStation 2 </h3>
-			</div>
-			<div class="advert-enclose">
-				<div class="advert-price">
-					<h4> Ksh. 3000 </h4>
-					<strike><p> Ksh.5000 </p></strike>
+				<div class="advert-img">
+					<img src="{{ item.picture }}">
 				</div>
-				<div class="advert-btn">
-					<button type="submit" class="btn btn-primary" > Add </button>
+
+				<div class="advert-txt">
+					<h3> {{ item.name }} </h3>
 				</div>
-			</div>
-			<div class="advert-left">
-				<p> 3 Items left </p>
-			</div>
+
+				<div class="advert-enclose">
+					<div class="advert-price">
+						<h4> Ksh.{{ item.current_price }} </h4>
+						<strike><p> Ksh.{{ item.past_price }} </p></strike>
+					</div>
+					<div class="advert-btn">
+						<button type="submit" class="btn btn-primary">
+							<a href="/add-to-cart/{{item.id}}"> Add </a>
+						</button>
+					</div>
+				</div>
+
+				<div class="advert-left">
+					<p> {{ item.instock }} Items left </p>
+				</div>
+
+			</div>	
+		{% endfor %}
+
 		</div>
-
-		<div class="advert">
-			<div class="advert-img">
-				<img src="static/images/gaming/ps2.jpg">
-			</div>
-			<div class="advert-txt">
-				<h3> PlayStation 2 </h3>
-			</div>
-			<div class="advert-enclose">
-				<div class="advert-price">
-					<h4> Ksh. 3000 </h4>
-					<strike><p> Ksh.5000 </p></strike>
-				</div>
-				<div class="advert-btn">
-					<button type="submit" class="btn btn-primary" > Add </button>
-				</div>
-			</div>
-			<div class="advert-left">
-				<p> 3 Items left </p>
-			</div>
-		</div>
-
-		<div class="advert">
-			<div class="advert-img">
-				<img src="static/images/gaming/ps2.jpg">
-			</div>
-			<div class="advert-txt">
-				<h3> PlayStation 2 </h3>
-			</div>
-			<div class="advert-enclose">
-				<div class="advert-price">
-					<h4> Ksh. 3000 </h4>
-					<strike><p> Ksh.5000 </p></strike>
-				</div>
-				<div class="advert-btn">
-					<button type="submit" class="btn btn-primary" > Add </button>
-				</div>
-			</div>
-			<div class="advert-left">
-				<p> 3 Items left </p>
-			</div>
-		</div>
-
-		<div class="advert">
-			<div class="advert-img">
-				<img src="static/images/gaming/ps2.jpg">
-			</div>
-			<div class="advert-txt">
-				<h3> PlayStation 2 </h3>
-			</div>
-			<div class="advert-enclose">
-				<div class="advert-price">
-					<h4> Ksh. 3000 </h4>
-					<strike><p> Ksh.5000 </p></strike>
-				</div>
-				<div class="advert-btn">
-					<button type="submit" class="btn btn-primary" > Add </button>
-				</div>
-			</div>
-			<div class="advert-left">
-				<p> 3 Items left </p>
-			</div>
-		</div>
-
 	</div>
 
 </div> 
