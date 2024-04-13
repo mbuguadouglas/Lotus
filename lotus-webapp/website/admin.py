@@ -6,19 +6,19 @@ from .models import Customer, Product, Order, Cart
 from werkzeug.utils import secure_filename
 
 
-admins = Blueprint('admins', __name__)
+admin = Blueprint('admin', __name__)
 
 
 
 # create route to view items in the database
-@admins.route('products/<path:filename>')	#filepath of where the images are located
+@admin.route('products/<path:filename>')	#filepath of where the images are located
 def display_items(filename):				#take the filename as a parameter
 
 	product_image = send_from_directory('../products',filename)		#move 1 step outward to given folder, and find the filename
 	return product_image
 
 
-@admins.route('add-items',methods=['GET','POST'])
+@admin.route('add-items',methods=['GET','POST'])
 @login_required
 def add_items():
 	if current_user.id == 1:
@@ -75,7 +75,7 @@ def add_items():
 
 
 
-@admins.route('view-items', methods=['GET', 'POST'])
+@admin.route('view-items', methods=['GET', 'POST'])
 @login_required
 def view_items():
 	if current_user.id == 1:
@@ -90,7 +90,7 @@ def view_items():
 
 
 
-@admins.route('update-items/<int:item_id>', methods=['GET','POST'])
+@admin.route('update-items/<int:item_id>', methods=['GET','POST'])
 def update_items(item_id):
 
 	if current_user.id == 1:
@@ -157,7 +157,7 @@ def update_items(item_id):
 	return render_template('error_404.html', user=current_user)
 
 
-@admins.route('delete-items/<int:item_id>', methods=['GET','POST'])
+@admin.route('delete-items/<int:item_id>', methods=['GET','POST'])
 def delete_items(item_id):
 	if current_user.id == 1:
 		try:

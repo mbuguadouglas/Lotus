@@ -7,13 +7,16 @@ from .models import Product, Customer, Cart
 views = Blueprint('views',__name__)
 
 
+
 @views.route('/',methods=['GET','POST'])
 @login_required
 def index():
 
 	items = Product.query.filter_by(flash_sale=True)
+	cart_items = Cart.query.filter_by(customer_id=current_user.id).all()
 
-	return render_template('index.html', user=current_user, items=items)
+	return render_template('index.html', user=current_user, items=items, cart=cart_items
+	if current_user.is_authenticated else [])
 
 
 @views.route('/add-to-cart/<int:item_id>',methods=['GET','POST'])
@@ -27,11 +30,10 @@ def add_to_cart(item_id):
 	# if it does exist increment its value by one
 	if item_exists:
 		try:
-			item_exists.items += 1
-			# item_exists.items = item_exists.items + 1
+			item_exists.items += 1		#increment value by 1
 			db.session.commit()
 
-			# link used MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
+			# link used for Product table MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
 			message = f'Quantity of {item_exists.products.name} has been updated'
 			flash(message, category='success')
 
@@ -39,7 +41,7 @@ def add_to_cart(item_id):
 
 		except Exception as e:
 			print(e)
-			# link used MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
+			# link used for Product table MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
 			message = f'Quantity of {item_exists.products.name} has not been updated'
 			flash(message, category='success')
 
@@ -52,13 +54,13 @@ def add_to_cart(item_id):
 		db.session.add(new_cart_item)
 		db.session.commit()
 
-		# link used MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
+		# link used for Product table MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
 		message = f'The {new_cart_item.products.name } was succesfuly added to the cart!'
 		flash(message, category='info')
 
 	except Exception as e:
 		print(e)
-		# link used MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
+		# link used for Product table MUST BE HOW YOU NAMED YOUR TABLES USING __tablename__
 		message = f'The {new_cart_item.products.name} item was not added to the cart. Try again?'
 
 		flash(message, category='warning')
@@ -70,13 +72,14 @@ def add_to_cart(item_id):
 @views.route('/view-cart/<int:customers_id>',methods=['GET','POST'])
 def view_cart(customers_id):
 
-	item_in_cart = Product.query.filter_by(id=customers_id).all()
+	cart = Cart.query.filter_by(customer_id = current_user.id).all()
+	amount = 0
+	shipping_fee = 200
 
-	return render_template('view_cart.html', user=current_user)
+	for item in cart:
+		amount += item.products.current_price * item.items
 
-
-
-
-
-
-
+	return render_template('view_cart.html', user=current_user,
+		cart=cart,
+		amount=amount,
+		total=amount+shipping_fee )

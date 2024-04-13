@@ -3,7 +3,21 @@
 │   ├── app.py
 │   ├── instance
 │   │   └── db.sqlite3
-│   ├── items
+│   ├── products
+│   │   ├── 12_Inch_MacBook.jpg
+│   │   ├── Buy_PS5_Consoles_PlayStation.jpg
+│   │   ├── gamingPc.jpg
+│   │   ├── Heres_a_great_EDC_tech_gadget_for_your_favorite_geek_-_The_Gadgeteer.jpg
+│   │   ├── IDS_Online_Faux_Leather_Office_Desk_Swivel_Chair_Old_Model_White.jpg
+│   │   ├── logo3.jpg
+│   │   ├── Microsoft_Surface_Laptop_3_-_An_Awesome_Travel_Laptop.jpg
+│   │   ├── offers.jpg
+│   │   ├── Rawlings_Official_League_Recreational_Use_Practice_Baseballs_Youth_Bag_of_12_OLB3BAG12_12_Count.jpg
+│   │   ├── s1XtKGOs.jpg
+│   │   ├── samsungFlip.jpg
+│   │   ├── SAMSUNG_Galaxy_S22.jpg
+│   │   ├── Slazenger_V200_Hockey_Stick_Players_Equipment_Training_Sports_Accessories_Red_Black_37_5_Inch_-_review_compare_prices_buy_online.jpg
+│   │   └── Tips_on_Finding_the_Best_2nd_Baseman_Glove.jpg
 │   └── website
 │       ├── admins.py
 │       ├── auth.py
@@ -116,9 +130,13 @@
 │       │   ├── index.html
 │       │   ├── login.html
 │       │   ├── profile.html
-│       │   └── signup.html
+│       │   ├── signup.html
+│       │   ├── update_items.html
+│       │   ├── view_cart.html
+│       │   └── view_items.html
 │       └── views.py
 ├── README.md
+├── requirements.txt
 └── tree.txt
 
-19 directories, 103 files
+19 directories, 121 files

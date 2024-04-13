@@ -4,10 +4,9 @@
     font-family: 'Poppins',sans-serif;
 }
 /*appropriate logo size*/
-.logo{
-    width:52px;
-    height:52px;
-    margin:5px 5px 5px 5px;
+#logo{
+    color: white;
+    margin-right: 5px;
 }
 .navbar{
     justify-content: space-evenly;
@@ -274,10 +273,7 @@
     border-radius: 10px;
     line-height: 40px;
 }
-.form h1{
-    text-align: center;
-    font-size: ;
-}
+
 .form-group{
     font-size: 25px;
     font-weight: bold;

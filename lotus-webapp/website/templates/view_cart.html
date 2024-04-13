@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 
-{% block title %} Change Password {% endblock %}
+{% block title %} View Cart {% endblock %}
 
 {% block body %}
 
 	<div class="main3">
 		<div class="main3-container".>
+			{% if cart %}
+			{% for item in cart %}
 
-		{% for item in items %}
 			<div class="advert">
 
 				<div class="advert-img">
-					<img src="{{ item.picture }}">
+					<img src="{{ item.products.picture }}">
 				</div>
 
 				<div class="advert-txt">
-					<h3> {{ item.name }} </h3>
+					<h3> {{ item.products.name }} </h3>
 				</div>
 
 				<div class="advert-enclose">
 					<div class="advert-price">
-						<h4> Ksh.{{ item.current_price }} </h4>
-						<strike><p> Ksh.{{ item.past_price }} </p></strike>
+						<h4> Ksh.{{ item.products.current_price }} </h4>
+						<strike><p> Ksh.{{ item }} </p></strike>
 					</div>
 					<div class="advert-btn">
 						<button type="submit" class="btn btn-primary" > Add </button>
@@ -29,13 +30,23 @@
 				</div>
 
 				<div class="advert-left">
-					<p> {{ item.instock }} Items left </p>
+					<p> {{ item }} Items left </p>
 				</div>
 
-			</div>	
-		{% endfor %}
+			</div>
+			{% endfor %}
+
+		{% else %}
+
+		<div class="cart-page">
+			<h1> Oh no! It looks like your cart is empty... </h1>
+			<img src="static/images/gifs/usage.gif">
+			<h2> <a href="{{ url_for('views.index')}}"> Add items now?</a> </h2>
+		</div>
+		{% endif %}
+
+
 
 		</div>
 	</div>
-
 {% endblock %}

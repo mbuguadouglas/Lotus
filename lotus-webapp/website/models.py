@@ -53,7 +53,7 @@ class Product(db.Model):
 
 	id = db.Column(db.Integer, primary_key=True, index=True)
 	name = db.Column(db.String(50), nullable=False)
-	picture = db.Column(db.String(1000))	#why is the picture set as a string?!
+	picture = db.Column(db.String(1000))	#why is the picture set as a string?! #only storethe path to pic!!
 	category = db.Column(db.String(50))
 	current_price = db.Column(db.Float(), nullable=False)
 	past_price = db.Column(db.Float(), nullable=False)

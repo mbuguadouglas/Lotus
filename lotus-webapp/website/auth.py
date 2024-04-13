@@ -17,6 +17,7 @@ def signup():
 	hiddeous. Might take up the callenge of rectifying this as an open source
 	project 
 	** took it up. not so bad**
+	**chose to change entire code base to wtforms!**
 	"""
 
 	form = SignupForm() 
