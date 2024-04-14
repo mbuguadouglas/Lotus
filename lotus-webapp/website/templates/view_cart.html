@@ -1,52 +1,90 @@
 {% extends 'base.html' %}
 
-{% block title %} View Cart {% endblock %}
+{% block title %} Cart {% endblock %}
+
 
 {% block body %}
 
-	<div class="main3">
-		<div class="main3-container".>
-			{% if cart %}
-			{% for item in cart %}
+<div class="container my-5">
+    <div class="row">
+        {% if cart %}
 
-			<div class="advert">
+        <h1 class="text-center mb-5" style="color: white;">Shopping Cart</h1>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
 
-				<div class="advert-img">
-					<img src="{{ item.products.picture }}">
-				</div>
+                    {% for item in cart %}
 
-				<div class="advert-txt">
-					<h3> {{ item.products.name }} </h3>
-				</div>
+                    <div class="row">
+                        <div class="col-sm-3 text-center align-self-center">
+                            <img src="{{ item.products.picture }}" alt="" class="img-fluid img-thumbnail shadow-sm" height="150px" width="150px">
+                        </div>
+                        <div class="col-sm-9">
+                            <div>
+                                <h3>{{ item.products.name }}</h3>
+                                <div class="my-3">
+                                    <label for="quantity">Quantity</label>
+                                    <a class="minus-cart btn" pid="{{item.id}}"><i class='bx bxs-checkbox-minus' ></i></a>
+                                    <span id="quantity">{{ item.items }}</span>
+                                    <a class="plus-cart btn" pid="{{item.id}}"><i class='bx bxs-plus-square'></i></a>
 
-				<div class="advert-enclose">
-					<div class="advert-price">
-						<h4> Ksh.{{ item.products.current_price }} </h4>
-						<strike><p> Ksh.{{ item }} </p></strike>
-					</div>
-					<div class="advert-btn">
-						<button type="submit" class="btn btn-primary" > Add </button>
-					</div>
-				</div>
+                                </div>
 
-				<div class="advert-left">
-					<p> {{ item }} Items left </p>
-				</div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-0"><span><strong>Ksh {{ item.products.current_price }}</strong></span></p>
+                                    <a href="" class="remove-cart btn btn-sm btn-secondary mr-3 " >Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
 
-			</div>
-			{% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 
-		{% else %}
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Cart Summary </h3>
+                    <hr color="black">
+                    <ul class="list-group">
+                        {% for item in cart %}
 
-		<div class="cart-page">
-			<h1> Oh no! It looks like your cart is empty... </h1>
-			<img src="static/images/gifs/usage.gif">
-			<h2> <a href="{{ url_for('views.index')}}"> Add items now?</a> </h2>
-		</div>
-		{% endif %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"><strong>{{item.products.name}}</strong><span id="amount">{{item.products.current_price}} X <span id="quantity{{item.id}}">{{ item.items}}</span></span></li>
+
+                        {% endfor %}
+
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amout <span>Ksh <span id="amount_tt">{{ amount }}</span></span></li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                            <div style="margin-top: 15px;">
+                                <strong>Total</strong><small>(Including Shipping)</small>
+                            </div>
+                            <span><strong>Ksh </strong><span id="totalamount"><strong>{{ total }}</strong></span></span>
+
+                        </li>
+
+                    </ul>
+
+                    <div class="d-grid"><a href="/place-order" class="btn btn-primary">Place Order</a></div>
+
+                </div>
+            </div>
+        </div>
 
 
 
-		</div>
-	</div>
+        {% else %}
+
+        <h1 class="text-center mb-5" style="color: white;">Your Cart is Empty</h1>
+
+        {% endif %}
+    </div>
+</div>
+
+
 {% endblock %}

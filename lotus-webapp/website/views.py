@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, redirect, flash, url_for, request
+from flask import Flask, Blueprint, render_template, redirect, flash, url_for, request, jsonify
 from flask_login import login_required, current_user
 from . import db
 from .models import Product, Customer, Cart
@@ -69,9 +69,8 @@ def add_to_cart(item_id):
 
 
 
-@views.route('/view-cart/<int:customers_id>',methods=['GET','POST'])
-def view_cart(customers_id):
-
+@views.route('/view-cart',methods=['GET','POST'])
+def view_cart():
 	cart = Cart.query.filter_by(customer_id = current_user.id).all()
 	amount = 0
 	shipping_fee = 200
@@ -79,7 +78,69 @@ def view_cart(customers_id):
 	for item in cart:
 		amount += item.products.current_price * item.items
 
-	return render_template('view_cart.html', user=current_user,
-		cart=cart,
+	return render_template('view_cart.html', user=current_user, cart=cart,
 		amount=amount,
 		total=amount+shipping_fee )
+
+
+
+
+@views.route('/plus-cart', methods=['GET','POST'])
+@login_required
+def plus_cart():
+	# get the cart id from the ajax request
+	if request.method == 'GET':
+		cart_id = request.args.get('cart_id')
+		cart_item = Cart.query.get(cart_id)
+		# cart_item.items = cart_item.items + 1
+		cart_item.items += 1
+		db.session.commit()
+
+		# update values of items in db
+		cart = Cart.query.filter_by(customer_id=current_user.id).all()
+		amount = 0
+		for item in cart:
+			amount = item.products.current_price * current_price
+
+		shipping_fee = 200
+		total_amount = amount + shipping_fee
+
+		# send out a response
+		data = {
+			'quantity' : cart_item.items,
+			'amount' : amount,
+			'total' : total_amount
+		}
+
+	return jsonify(data)
+
+
+
+@views.route('/minus-cart', methods=['GET','POST'])
+@login_required
+def minus_cart():
+	# get the cart id from the ajax request
+	if request.method == 'GET':
+		cart_id = request.args.get('cart_id')
+		cart_item = Cart.query.get(cart_id)
+		# cart_item.items = cart_item.items - 1
+		cart_item.items -= 1
+		db.session.commit()
+
+		# update values of items in db
+		cart = Cart.query.filter_by(customer_id=current_user.id).all()
+		amount = 0
+		for item in cart:
+			amount = item.products.current_price * current_price
+
+		shipping_fee = 200
+		total_amount = amount + shipping_fee
+
+		# send out a response
+		data = {
+			'quantity' : cart_item.items,
+			'amount' : amount,
+			'total' : total_amount
+		}
+
+	return jsonify(data)
