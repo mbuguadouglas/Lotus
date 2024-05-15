@@ -15,12 +15,12 @@ def signup():
 	""" function that defines the authentication process for signup
 	chose not to use wtf_forms since one cannot style them. They're
 	hiddeous. Might take up the callenge of rectifying this as an open source
-	project 
+	project
 	** took it up. not so bad**
 	**chose to change entire code base to wtforms!**
 	"""
 
-	form = SignupForm() 
+	form = SignupForm()
 
 	# if request.method == 'POST':
 	if form.validate_on_submit():
@@ -85,8 +85,8 @@ def login():
 				return redirect(url_for('views.index'))
 
 
-			elif not check_password_hash(customer.password, password):	#verification using werkzeug in auth.py	
-			# else:				#using werkzeug in models.py-----return true if passwords dont match	
+			elif not check_password_hash(customer.password, password):	#verification using werkzeug in auth.py
+			# else:				#using werkzeug in models.py-----return true if passwords dont match
 				message = 'Oops! Looks like you entered the wrong password. Please check and try again.'
 				flash(message, category='warning')
 
@@ -119,7 +119,7 @@ def profile(customers_id):	#why not user.id?!?!
 	# print (f'Customer id is: {customers_id}')
 	# return f'Customer id is: {customers_id}'
 	customer = Customer.query.get(customers_id)	#-> instaed of doing this use current_user functionality from flask_login in the front end
-	
+
 	# basic error handling to see the url
 	# print(url_for('auth.profile(customers_id)')) #-> couldnt get it to work
 	# print(redirect('/profile/int:<customers_id>'))	#worked flawlessly
@@ -172,4 +172,3 @@ def change_password(customers_id):
 			flash(message, category='danger')
 
 	return render_template('change_password.html', user=current_user, form=form)
-
